@@ -246,13 +246,16 @@
     #define RK30SDK_WIFI_GPIO_RESET_IOMUX_FGPIO     GPIO3D_GPIO3D1
     
     #elif defined(CONFIG_MT5931) || defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT5931)
+    // AVION
+    #define RK30SDK_WIFI_GPIO_WIFI_INT_B                RK30_PIN3_PD2
+    #define RK30SDK_WIFI_GPIO_WIFI_INT_B_ENABLE_VALUE   GPIO_HIGH
+
     //power
-    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PC6 //RK30_PIN3_PD0       // huweiguo          
+    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN6_PA7 // RK30_PIN3_PD1 //RK30_PIN3_PC6 //RK30_PIN3_PD0       // huweiguo          
     #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH                   
     //reset
-    #define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1       // huweiguo 
+    #define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1 // RK30_PIN6_PA7 // RK30_PIN3_PD1       // huweiguo 
     #define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH    
-
     #elif defined(CONFIG_MT6620)
         #if !defined(CONFIG_USE_SDMMC0_FOR_WIFI_DEVELOP_BOARD)
             #define USE_SDMMC_CONTROLLER_FOR_WIFI 1
