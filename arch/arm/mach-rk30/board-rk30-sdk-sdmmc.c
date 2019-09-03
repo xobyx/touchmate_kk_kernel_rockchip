@@ -247,7 +247,7 @@
     
     #elif defined(CONFIG_MT5931) || defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT5931)
     // AVION
-    #define RK30SDK_WIFI_GPIO_WIFI_INT_B                RK30_PIN3_PD2
+    #define RK30SDK_WIFI_GPIO_WIFI_INT_B                RK30_PIN6_PB3
     #define RK30SDK_WIFI_GPIO_WIFI_INT_B_ENABLE_VALUE   GPIO_HIGH
 
     //power
