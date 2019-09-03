@@ -217,7 +217,7 @@ struct hdmi_edid {
 	unsigned char deepcolor;			//bit3:DC_48bit; bit2:DC_36bit; bit1:DC_30bit; bit0:DC_Y444;
 	unsigned int  cecaddress;			//CEC physical address
 	unsigned int  maxtmdsclock;			//Max supported tmds clock
-	unsigned char fields_present;		//bit7£ºlatency£»bit6£ºi_lantency£»bit5£ºhdmi_video
+	unsigned char fields_present;		//bit7Â£ÂºlatencyÂ£Â»bit6Â£Âºi_lantencyÂ£Â»bit5Â£Âºhdmi_video
 	unsigned char video_latency;
 	unsigned char audio_latency;
 	unsigned char interlaced_video_latency;
@@ -312,7 +312,7 @@ struct hdmi {
 #define HDMI_AUTO_CONFIG		true
 
 // HDMI default vide mode
-#define HDMI_VIDEO_DEFAULT_MODE			HDMI_1280x720p_60HZ//HDMI_1920x1080p_60HZ
+#define HDMI_VIDEO_DEFAULT_MODE			HDMI_1920x1080p_60HZ //DMI_1280x720p_60HZ
 
 // HDMI default audio parameter
 #define HDMI_AUDIO_DEFAULT_TYPE 		HDMI_AUDIO_LPCM
