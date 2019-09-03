@@ -5,9 +5,8 @@ jobs:
       - image: debian:stretch
 
     steps:
-      - checkout
-      
-       - run:
+      - checkout      
+      - run:
           name: update
           command: apt-get update
 
