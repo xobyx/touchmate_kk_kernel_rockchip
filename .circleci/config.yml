@@ -6,13 +6,10 @@ jobs:
 
     steps:
       - checkout      
-      - run:
-          name: update
-          command: apt-get update
 
       - run:
-          name: Print the Current Time
-          command: sudo apt-get -y install git-core gnupg flex bison gperf libsdl-dev libesd0-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
+          name: install libs
+          command: apt-get update && apt-get -y install git-core gnupg flex bison gperf libsdl-dev libesd0-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
      
       - run:
           name: clone ARM toolchain
