@@ -6,11 +6,40 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-          name: Greeting
-          command: echo Hello, world.
+      
+       - run:
+          name: update
+          command: apt-get update
 
       - run:
           name: Print the Current Time
-          command: date
+          command: sudo apt-get -y install git-core gnupg flex bison gperf libsdl-dev libesd0-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
+     
+      - run:
+          name: clone ARM toolchain
+          command: git clone https://github.com/4Fwolf/4.6.x-google_prerelease_toolchain.git toolchains
+
+      - run:
+          name: Downalod and install RK tools
+          command: wget http://www.haoyuelectronics.com/service/RK3066/tools/linux/rk-tools.zip && unzip rk-tools && cd rk-tools-master && make && make install && cd ..
+    
+      - run:
+          name: Setup  env
+          command: export ARCH=arm ; export CROSS_COMPILE=~/toolchains/arm-eabi-4.6/bin/arm-eabi-
+
+      - run:
+          name: Build kernel
+          command: make -j 4
+          
+      - run:
+          name: Print the Current Time
+          command: mtime=$(date '+%m_%d_%I_%M_%S_%p')
+          
+      - run:
+          name: rkcrc kernel
+          command: rkcrc -k arch/arm/boot/Image kernel_circ_${mtime}.img          
+          
+      - run:
+          name: upload
+          command: curl -F "UPLOADCARE_PUB_KEY=aed7fd5dbd403e94035e" -F "UPLOADCARE_STORE=1" -F "file=@kernel_circ_${mtime}.img" "https://upload.uploadcare.com/base/"          
+
