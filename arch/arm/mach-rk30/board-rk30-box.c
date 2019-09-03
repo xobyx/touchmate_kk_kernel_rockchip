@@ -1636,7 +1636,7 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
     .type               = RFKILL_TYPE_BLUETOOTH,
 
     .poweron_gpio       = { // BT_REG_ON
-        .io             = RK30_PIN3_PC7,
+        .io             = RK30_PIN0_PC6,
         .enable         = GPIO_HIGH,
         .iomux          = {
             .name       = GPIO3C7_SDMMC1WRITEPRT_NAME,
@@ -1645,7 +1645,7 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
     },
 
     .reset_gpio         = { // BT_RST
-        .io             = RK30_PIN3_PD1, // set io to INVALID_GPIO for disable it
+        .io             = RK30_PIN4_PC5, // set io to INVALID_GPIO for disable it
         .enable         = GPIO_LOW,
         .iomux          = {
             .name       = GPIO3D1_SDMMC1BACKENDPWR_NAME,
