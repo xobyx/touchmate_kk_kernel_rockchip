@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Build kernel
-          command: make -j 4
+          command: export ARCH=arm ; export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi- ; make -j 4
           
       - run:
           name: Print the Current Time
