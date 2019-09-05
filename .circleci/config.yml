@@ -23,10 +23,7 @@ jobs:
             export ARCH=arm 
             export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
             make -j 4
-            
-            
 
-   
       - run:
           name: crc kernel and upload
           command: |
