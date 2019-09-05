@@ -21,7 +21,7 @@ jobs:
     
       - run:
           name: Setup  env
-          command: export ARCH=arm ; export CROSS_COMPILE=~/toolchains/arm-eabi-4.6/bin/arm-eabi-
+          command: export ARCH=arm ; export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
 
       - run:
           name: Build kernel
