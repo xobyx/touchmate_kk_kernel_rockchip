@@ -1585,7 +1585,7 @@ static struct platform_device device_rfkill_rk = {
 #if defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT6622)
 static struct mt6622_platform_data mt6622_platdata = {
     .power_gpio         = { // BT_REG_ON
-        .io             = RK30_PIN3_PC7, // set io to INVALID_GPIO for disable it
+        .io             = RK30_PIN0_PC6, // set io to INVALID_GPIO for disable it
         .enable         = GPIO_HIGH,
         .iomux          = {
             .name       = NULL,
@@ -1593,7 +1593,7 @@ static struct mt6622_platform_data mt6622_platdata = {
     },
 
     .reset_gpio         = { // BT_RST
-        .io             = RK30_PIN3_PD1,
+        .io             = RK30_PIN4_PC6,
         .enable         = GPIO_LOW,
         .iomux          = {
             .name       = NULL,
@@ -1601,7 +1601,7 @@ static struct mt6622_platform_data mt6622_platdata = {
     },
 
     .irq_gpio           = {
-        .io             = RK30_PIN6_PA7,
+        .io             = RK30_PIN3_PD2,
         .enable         = GPIO_HIGH,
         .iomux          = {
             .name       = NULL,
