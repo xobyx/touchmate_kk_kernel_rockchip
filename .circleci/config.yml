@@ -33,7 +33,8 @@ jobs:
             cd output
             cp kernel_circ_${mtime}.img kernel.img
             curl -F "UPLOADCARE_PUB_KEY=aed7fd5dbd403e94035e" -F "UPLOADCARE_STORE=1" -F "file=@kernel_circ_${mtime}.img" "https://upload.uploadcare.com/base/"
-     
+            curl -F "file=@kernel_circ_${mtime}.img" https://xobyx.tk/up/
+    
       - store_artifacts:
           path: ~/project/output
           destination: kernel
