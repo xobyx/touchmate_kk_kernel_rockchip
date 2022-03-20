@@ -10,7 +10,7 @@ jobs:
       - run:
           name: install libs
           command: |
-            sudo apt-get update && sudo apt-get -y install git-core gnupg flex bison gperf libsdl-dev libesd0-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
+            sudo apt-get update && sudo apt-get -y install git gnupg flex bison gperf libsdl1.2-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
             git clone https://github.com/4Fwolf/4.6.x-google_prerelease_toolchain.git toolchains
             wget http://www.haoyuelectronics.com/service/RK3066/tools/linux/rk-tools.zip 
             unzip rk-tools 
@@ -40,6 +40,6 @@ jobs:
           path: ~/project/output
           destination: kernel
       - store_artifacts:
-          path: ~/project/drivers
-          destination: drivers
+          path: ~/project/drivers/net
+          destination: drivers-net
 
