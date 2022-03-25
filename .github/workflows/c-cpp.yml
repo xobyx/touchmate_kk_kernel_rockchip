@@ -22,9 +22,9 @@ jobs:
     - name: install rk-tools
       run: cd rk-tools-master && make && sudo make install && cd ..       
     - name: setEnv1
-      run: export ARCH=arm
+      run: export ARCH=arm && echo $ARCH 
     - name: setEnv2
-      run: export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
+      run: export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi- && echo $CROSS_COMPILE && $CC --version
     - name: make kernal
       run: make -j 4 
     - name: crc kernal
