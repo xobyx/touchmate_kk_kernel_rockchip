@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  prebuild:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -21,13 +21,14 @@ jobs:
       run: wget http://www.haoyuelectronics.com/service/RK3066/tools/linux/rk-tools.zip && unzip rk-tools 
     - name: install rk-tools
       run: cd rk-tools-master && make && sudo make install && cd ..
-  build:
-    runs-on: ubuntu-latest
-    env:
-      ARCH: arm
-      CROSS_COMPILE: $PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
-    steps:  
+
+    
+      
+
     - name: make kernal
+      env:
+            ARCH: arm
+            CROSS_COMPILE: ${PWD}/toolchains/arm-eabi-4.6/bin/arm-eabi-
       run: make -j 4 
     - name: crc kernal
       run: mtime=$(date '+%m_%d_%I_%M_%S_%p') && mkdir output && rkcrc -k arch/arm/boot/Image output/kernel_circ_${mtime}.img && cp kernel_circ_${mtime}.img kernel.img
