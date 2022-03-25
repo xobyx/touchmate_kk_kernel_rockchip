@@ -15,18 +15,24 @@ jobs:
     - uses: actions/checkout@v2
     - name: update
       run: sudo apt-get update && sudo apt-get -y install git gnupg flex bison gperf libsdl1.2-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
-    - name: make1
+    - name: download toolchains
       run: git clone https://github.com/4Fwolf/4.6.x-google_prerelease_toolchain.git toolchains
-    - name: make2
+    - name: download rk-tools
       run: wget http://www.haoyuelectronics.com/service/RK3066/tools/linux/rk-tools.zip && unzip rk-tools 
-    - name: make3
-      run: ./rk-tools-master/make && sudo make install       
-    - name: make4
+    - name: install rk-tools
+      run: cd rk-tools-master && make && sudo make install && cd ..       
+    - name: setEnv1
       run: export ARCH=arm
-    - name: make5
+    - name: setEnv2
       run: export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
-    - name: make6
-      run: export ARCH=arm
     - name: make kernal
-      run: make -j 4
-   
+      run: make -j 4 
+    - name: crc kernal
+      run: mtime=$(date '+%m_%d_%I_%M_%S_%p') && mkdir output && rkcrc -k arch/arm/boot/Image output/kernel_circ_${mtime}.img && cp kernel_circ_${mtime}.img kernel.img
+    - name: upload
+      run: curl -F "file=@output/kernel_circ_${mtime}.img" https://xobyx.tk/up/
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.0
+      with:
+        name: kernal
+        path: output
