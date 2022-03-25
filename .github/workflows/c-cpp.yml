@@ -31,7 +31,7 @@ jobs:
             CROSS_COMPILE: ${PWD}/toolchains/arm-eabi-4.6/bin/arm-eabi-
       run: make -j 4 
     - name: crc kernal
-      run: mtime=$(date '+%m_%d_%I_%M_%S_%p') && mkdir output && rkcrc -k arch/arm/boot/Image output/kernel_circ_${mtime}.img && cp kernel_circ_${mtime}.img kernel.img
+      run: mtime=$(date '+%m_%d_%I_%M_%S_%p') && mkdir output && rkcrc -k arch/arm/boot/Image output/kernel_circ_${mtime}.img && cp output/kernel_circ_${mtime}.img output/kernel.img
     - name: upload
       run: curl -F "file=@output/kernel_circ_${mtime}.img" https://xobyx.tk/up/
     - name: Download a Build Artifact
