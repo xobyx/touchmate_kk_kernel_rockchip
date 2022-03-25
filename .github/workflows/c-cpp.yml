@@ -1,0 +1,32 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: update
+      run: sudo apt-get update && sudo apt-get -y install git gnupg flex bison gperf libsdl1.2-dev build-essential zip curl libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev sharutils lzop wget libssl-dev
+    - name: make1
+      run: git clone https://github.com/4Fwolf/4.6.x-google_prerelease_toolchain.git toolchains
+    - name: make2
+      run: wget http://www.haoyuelectronics.com/service/RK3066/tools/linux/rk-tools.zip && unzip rk-tools 
+    - name: make3
+      run: ./rk-tools-master/make && sudo make install       
+    - name: make4
+      run: export ARCH=arm
+    - name: make5
+      run: export CROSS_COMPILE=$PWD/toolchains/arm-eabi-4.6/bin/arm-eabi-
+    - name: make6
+      run: export ARCH=arm
+    - name: make kernal
+      run: make -j 4
+   
